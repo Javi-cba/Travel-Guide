@@ -1,0 +1,95 @@
+/*ESTILOS NAVBAR*/
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  padding: 0.5rem;
+  width: 100%;
+  z-index: 1000;
+  margin-bottom: 1.5rem;
+  background-color: transparent;
+}
+
+nav {
+  display: flex;
+  width: 83%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2121214b;
+  backdrop-filter: blur(2px);
+  border-color: #c4c4c471 !important;
+  border: 2px solid;
+  border-radius: 2rem;
+  padding: 0.2rem 1rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+nav h2 {
+  font-size: 2rem;
+  margin: 0;
+  color: #ffffff;
+}
+
+/*FIN ESTILOS NAVBAR*/
+
+/* ESTILOS MENU DESPLEGABLE */
+.menu-toggle {
+  display: none; /* Oculto por defecto */
+
+  background: none;
+  border: none;
+  color: white;
+  font-size: 3.2rem;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 2.7rem;
+}
+
+/* Estilos para el menú en pantallas pequeñas */
+@media (max-width: 1230px) {
+  nav {
+    padding: 0.6rem 1rem;
+  }
+
+  nav ul {
+    flex-direction: column; /* Cambia a columna para el menú desplegable */
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #343534af;
+    backdrop-filter: blur(2px);
+
+    border-radius: 2rem;
+    top: 5.6rem; /* Ajusta según sea necesario */
+    right: 1rem; /* Ajusta según sea necesario */
+    display: none;
+    gap: 1rem;
+    padding: 1rem;
+    z-index: 1001;
+  }
+
+  nav ul.open {
+    display: flex;
+    font-size: 2rem;
+    backdrop-filter: blur(2px);
+    border-color: #c4c4c471 !important;
+  }
+  nav a {
+    width: 80%;
+    text-align: center;
+    border-bottom: #353535af 1px solid;
+  }
+
+  .menu-toggle {
+    display: block; /* Muestra el botón del menú */
+  }
+}

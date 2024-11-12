@@ -1,0 +1,83 @@
+#root {
+  max-width: 1280px;
+  margin: 0rem;
+  padding: 0.1rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* BTN Ant Design */
+.ant-btn {
+  border-radius: 0.5rem !important;
+  background-color: #47474791 !important;
+  backdrop-filter: blur(5px) !important;
+  color: #cccbcbee !important;
+  font-weight: bold !important;
+  border-color: #57565691;
+  margin: 0.3rem !important;
+}
+
+.ant-btn:hover {
+  background-color: #74737391 !important;
+  border-color: #c0bfbf91 !important;
+}
+
+.ant-btn:active {
+  background-color: #88878791 !important;
+  border-color: #242424a6 !important;
+  border: 1px solid !important;
+}
+
+/* Estilo para el scrollbar  SOLO PARA CHROME Y SAFARI*/
+*::-webkit-scrollbar {
+  width: 12px !important;
+}
+
+*::-webkit-scrollbar-track {
+  background: #5555552f !important;
+  border-radius: 6px !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #47474791 !important;
+  border-radius: 6px !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555 !important;
+}

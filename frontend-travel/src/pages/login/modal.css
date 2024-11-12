@@ -1,0 +1,46 @@
+/* Estilos personalizados para el modal Register*/
+.custom-modal .ant-modal-content {
+  background-color: #0e0a07b2 !important;
+  backdrop-filter: blur(2px) !important;
+  color: white !important;
+}
+
+.custom-modal .ant-modal-header,
+.custom-modal .ant-modal-footer {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+/* Cambiar color de los títulos e iconos de Steps */
+.custom-modal .ant-steps-item-title,
+.custom-modal .ant-steps-item-icon > .ant-steps-icon {
+  color: #ffffff !important;
+}
+
+.custom-modal .ant-steps-item-icon {
+  background-color: #0e0a07b2 !important;
+  border-color: #0e0a07b2 !important;
+}
+
+.custom-modal .ant-steps-item-process .ant-steps-item-icon {
+  background-color: #d19129c5 !important;
+  border-color: #d19129c5 !important;
+}
+
+.custom-modal .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #53c41a79 !important;
+  border-color: #53c41a79 !important;
+}
+
+.custom-modal .ant-steps-item-finish .ant-steps-item-title {
+  color: #53c41a79 !important;
+}
+
+/* Cambiar el color de las letras en los checkboxes a blanco */
+.custom-modal .ant-checkbox-wrapper {
+  color: #ffffff !important;
+}
+
+.custom-modal .ant-checkbox-wrapper .ant-checkbox + span {
+  color: #ffffff !important;
+}

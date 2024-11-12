@@ -1,0 +1,27 @@
+{
+  "name": "recommend-service",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000r\u0000e\u0000c\u0000o\u0000m\u0000e\u0000n\u0000s\u0000e\u0000r\u0000v\u0000i\u0000c\u0000e\u0000\r\u0000 \u0000",
+  "main": "recommend.js",
+  "scripts": {
+    "start": "node recommend.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.12.2",
+    "@grpc/proto-loader": "^0.7.13",
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-http-proxy": "^2.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.1",
+    "openai": "^4.68.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

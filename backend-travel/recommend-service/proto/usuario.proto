@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package usuarios;
+
+service UsuarioService {
+    rpc BuscarPorEmail(BuscarPorEmailRequest) returns (UsuarioResponse);
+}
+
+message BuscarPorEmailRequest {
+    string email = 1;
+}
+
+message UsuarioResponse {
+    string _id = 1;
+    string nombre = 2;
+    string email = 3;
+    string password = 4; 
+    string ubicacion = 5;
+
+    Preferencias preferencias = 6;
+    repeated HistorialViaje historialViajes = 7;
+
+    string createdAt = 8; 
+    string updatedAt = 9; 
+    int32 __v = 10; 
+}
+
+message Preferencias {
+    string tipoDeAventurero = 1;
+    repeated string preferencias = 2;
+    string presupuesto = 3;
+    repeated string destinosFavoritos = 4; 
+}
+
+message HistorialViaje {
+    string destino = 1;
+    string fechaViaje = 2; 
+    string _id = 3;
+}
