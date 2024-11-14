@@ -1,6 +1,6 @@
 
 
-## Funcionalidades Disponibles
+## Funcionalidades
 La aplicación web ofrece las siguientes funcionalidades:
 
 - **Registrarse**: Los usuarios al iniciar sesión por primera vez podrán registrarse como viajeros indicando: Tipo de Viajero, Preferencias y Presupuesto disponible.
