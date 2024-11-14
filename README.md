@@ -1,5 +1,5 @@
 
-## Instalación
+## INSTALACION
 
 1. Clona el repositorio:
    ```bash
