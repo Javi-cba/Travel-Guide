@@ -9,11 +9,11 @@ La aplicación web ofrece las siguientes funcionalidades:
   
 - **Ver el clima del lugar**: Los usuarios pueden consultar el clima de las recomendaciones, incluyendo la temperatura de los 7 días.
 
-- **Ver la ubicación**: La aplicación utiliza GoogleMaps para poder mostrar la ubicación de las recomemdaciones de destino.
+- **Ver la ubicación**: La aplicación utiliza GoogleMaps para poder mostrar la ubicación de las recomendaciones de destino.
 
 
 
-## INSTALACION
+## Instalación
 
 1. Clona el repositorio:
    ```bash
