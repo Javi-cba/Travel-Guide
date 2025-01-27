@@ -13,13 +13,14 @@ const URL_REC = env.URL_REC;
 const PORT = env.PORT;
 
 const app = express();
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+};
 
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
+app.options('', cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
