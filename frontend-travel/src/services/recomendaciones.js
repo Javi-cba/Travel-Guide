@@ -9,6 +9,7 @@ export const getRecomendaciones = async email => {
       `${URL}/recomendaciones/usuario?email=${email}`
     );
 
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error en getRecomendaciones:', error);

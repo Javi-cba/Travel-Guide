@@ -22,6 +22,7 @@ async function getAIResponse(prompt) {
         },
       }
     );
+    console.log(response.data);
 
     // Devuelve la respuesta en formato JSON
     return response.data;

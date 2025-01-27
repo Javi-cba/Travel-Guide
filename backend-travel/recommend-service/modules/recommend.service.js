@@ -36,6 +36,7 @@ async function getByUser(email) {
     return recommendations; // Resuelve la promesa con las recomendaciones
   } catch (error) {
     console.error('Error realizando la solicitud a la IA:', error);
+    throw error;
   }
 }
 

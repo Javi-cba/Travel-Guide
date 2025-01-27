@@ -26,7 +26,7 @@ const processLugares = async nombre => {
     // Obtiene el place_id del lugar usando Places API
     const placeResponse = await axios.get(PLACES_URL, {
       params: {
-        input: nombre, // Cambié 'placeName' por 'nombre' aquí
+        input: nombre,
         inputtype: 'textquery',
         fields: 'place_id',
         key: KEYAPI,
