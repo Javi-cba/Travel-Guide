@@ -44,4 +44,5 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
    npm run dev
    ```
 
-![image](https://i.ibb.co/NC7JzXz/pref.jpg)
+
+![image](https://i.giphy.com/lZc9Ia93phFTRRoR2J.webp)
