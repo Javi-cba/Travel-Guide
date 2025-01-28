@@ -1,4 +1,5 @@
 const express = require('express');
+const http = require('http');
 const conectarDB = require('./config/db');
 const cors = require('cors');
 const recommendRoutes = require('./modules/recommend.routes');
@@ -16,6 +17,11 @@ app.use(cors(corsOptions));
 const PORT = process.env.PORT2 || 3020;
 
 conectarDB();
+const server = http.createServer(app);
+
+server.setTimeout(50000, () => {
+  console.log('Request timeout exceeded');
+});
 
 app.use(express.json());
 app.use('/', recommendRoutes); // Rutas de recomendaciones
