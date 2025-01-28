@@ -50,21 +50,7 @@ app.get('/', (req, res) => {
 // Microservices
 app.use('/preferencias', proxy(URLPRF));
 app.use('/usuarios', proxy(URLUSU));
-app.use(
-  '/recomendaciones',
-  proxy(URL_REC, {
-    proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
-      return proxyReqOpts;
-    },
-    userResHeaderDecorator: (headers, userReq, userRes, proxyReq, proxyRes) => {
-      headers['Access-Control-Allow-Origin'] = '*';
-      headers['Access-Control-Allow-Methods'] =
-        'GET,HEAD,PUT,PATCH,POST,DELETE';
-      headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization';
-      return headers;
-    },
-  })
-);
+app.use('/recomendaciones', proxy(URL_REC));
 
 app.listen(PORT, () => {
   console.log(
