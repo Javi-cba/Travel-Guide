@@ -16,3 +16,14 @@ export const getRecomendaciones = async email => {
     throw error;
   }
 };
+
+export const getRouteIndex = async () => {
+  try {
+    const response = await axios.post(`${URL}/recomendaciones`);
+
+    console.log('SERVICEEEEEEE:', response.data);
+  } catch (error) {
+    console.error('Error en getRecomendaciones:', error);
+    throw error;
+  }
+};
