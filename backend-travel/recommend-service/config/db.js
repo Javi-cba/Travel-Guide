@@ -10,7 +10,6 @@ const conectarDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('DBurl: ', mongoURI);
 
     console.log('Conectado a MongoDB');
   } catch (error) {
