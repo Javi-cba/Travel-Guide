@@ -45,4 +45,4 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
    ```
 
 
-![image](https://i.giphy.com/lZc9Ia93phFTRRoR2J.webp)
+![image](https://i.ibb.co/NC7JzXz/pref.jpg)
