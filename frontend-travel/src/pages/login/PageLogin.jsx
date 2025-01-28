@@ -8,7 +8,6 @@ import {
 } from '@ant-design/icons';
 import PageRegister from './PageRegister';
 import { getExistUser } from '../../services/users';
-import { getRouteIndex } from '../../services/recomendaciones';
 import { useLugares } from '../../context/drawerLugares';
 import { useRecomend } from '../../context/recomend';
 
@@ -23,7 +22,7 @@ const PageLogin = () => {
     const validarUsuario = async () => {
       if (isAuthenticated && user) {
         const respExist = await getExistUser(user.email);
-        getRouteIndex();
+
         if (!respExist) {
           setIsNewUser(true);
         } else {

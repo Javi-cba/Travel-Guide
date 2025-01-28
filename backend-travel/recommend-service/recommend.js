@@ -1,22 +1,11 @@
 const express = require('express');
 const http = require('http');
-// const conectarDB = require('./config/db');
-const cors = require('cors');
 const recommendRoutes = require('./modules/recommend.routes');
 
 const app = express();
-const corsOptions = {
-  origin: '*',
-  credentials: true,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-};
-
-app.options('', cors(corsOptions));
-app.use(cors(corsOptions));
 
 const PORT = process.env.PORT2 || 3020;
 
-// conectarDB();
 const server = http.createServer(app);
 
 server.setTimeout(50000, () => {
