@@ -3,12 +3,13 @@ require('dotenv').config();
 
 const conectarDB = async () => {
   try {
-    //  URL de base de datos
+    // URL de base de datos
     const mongoURI = process.env.DBurl;
 
+    // Conectamos a la base de datos
     await mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 30000,
     });
 
     console.log('Conectado a MongoDB');
