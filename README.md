@@ -44,5 +44,7 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
    npm run dev
    ```
 
+## Documentación 
+https://fortune-fig-db7.notion.site/TravelMaps-_-Javier-C-136df722d5d080629faee0f58bd2034d?pvs=4
 
 ![image](https://i.ibb.co/NC7JzXz/pref.jpg)
