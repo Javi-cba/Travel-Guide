@@ -8,8 +8,13 @@ const URL_USER = process.env.URL_USER;
 // DEVUELVE UNA RECOMENDACION DE LUGARES
 async function getByUser(email) {
   try {
-    const resp = await axios.get(`${URL_USER}/buscar-email?email=${email}`);
-    console.log(resp.data);
+    if (!URL_USER) {
+      throw new Error('Falta la variable de entorno URL_USER');
+    }
+
+    const resp = await axios.get(`${URL_USER}/buscar-email`, {
+      params: { email },
+    });
 
     if (!resp.data) {
       throw new Error('Usuario no encontrado');
@@ -35,7 +40,7 @@ async function getByUser(email) {
 
     return recommendations; // Resuelve la promesa con las recomendaciones
   } catch (error) {
-    console.error('Error realizando la solicitud a la IA:', error);
+    console.error('Error realizando la solicitud a la IA:', error.message);
     throw error;
   }
 }

@@ -3,11 +3,15 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-URL_OPENAI = process.env.URL_OPENAI;
-KEY_OPENAI = process.env.OPENAI_API_KEY;
+const URL_OPENAI = process.env.URL_OPENAI;
+const KEY_OPENAI = process.env.OPENAI_API_KEY;
 
 async function getAIResponse(prompt) {
   try {
+    if (!URL_OPENAI || !KEY_OPENAI) {
+      throw new Error('Faltan las variables URL_OPENAI / OPENAI_API_KEY');
+    }
+
     const response = await axios.post(
       URL_OPENAI,
       {
@@ -27,7 +31,7 @@ async function getAIResponse(prompt) {
     // Devuelve la respuesta en formato JSON
     return response.data;
   } catch (error) {
-    console.error('Error al enviar el prompt a OpenAI:', error);
+    console.error('Error al enviar el prompt a OpenAI:', error.message);
     throw error;
   }
 }

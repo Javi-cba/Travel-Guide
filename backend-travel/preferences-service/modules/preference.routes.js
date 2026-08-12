@@ -36,9 +36,8 @@ router.get('/get', async (req, res) => {
     const preferencias = await PreferenciasService.findAll();
     res.status(200).json(preferencias); // Responde con todas las preferencias
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: 'Error al obtener preferencias', error: error });
+    console.error('Error al obtener preferencias:', error.message);
+    res.status(500).json({ message: 'Error al obtener preferencias' });
   }
 });
 
