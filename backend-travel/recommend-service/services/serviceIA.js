@@ -17,7 +17,7 @@ async function getAIResponse(prompt) {
       {
         model: process.env.OPENAI_MODEL || 'gpt-5.4-mini',
         messages: [{ role: 'system', content: prompt }],
-        max_tokens: 1100,
+        max_completion_tokens: 4000,
       },
       {
         headers: {
