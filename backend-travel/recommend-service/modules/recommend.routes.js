@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Recomendaciones = require('./recommend.service'); // Importa los servicios
 
+// Códigos de 429 que sí se destraban esperando. El resto son de facturación.
+const TRANSITORIOS = ['rate_limit_exceeded', 'requests', 'tokens'];
+
 // Get de prueba
 router.get('/', (req, res) => {
   res.send('Servicio de Recomendaciones');
@@ -23,6 +26,7 @@ router.post('/usuario', async (req, res) => {
     // del error externo solo se propaga el código, que no es sensible.
     const status = error.response?.status;
     const codigo = error.response?.data?.error?.code;
+    const tipo = error.response?.data?.error?.type;
     const detalle = error.response?.data?.error?.message;
     // El flujo llama a dos servicios externos: sin saber cuál falló, un 429 del
     // user-service se leería como falta de crédito de OpenAI.
@@ -46,9 +50,15 @@ router.post('/usuario', async (req, res) => {
     }
 
     if (status === 429) {
-      // OpenAI usa 429 tanto para falta de crédito como para rate limit:
-      // son problemas distintos y el mensaje tiene que decir cuál es.
-      if (codigo === 'insufficient_quota') {
+      // OpenAI usa 429 tanto para falta de crédito como para rate limit, y
+      // tiene varios códigos para lo primero (insufficient_quota,
+      // credit_balance_exhausted, billing_hard_limit_reached...). Solo se
+      // tratan como reintentables los códigos transitorios conocidos: ante uno
+      // desconocido conviene decir "falta crédito" y no "probá de nuevo",
+      // porque esperar no destraba un problema de facturación.
+      const transitorio = TRANSITORIOS.includes(codigo) || TRANSITORIOS.includes(tipo);
+
+      if (!transitorio) {
         return res.status(503).json({
           message:
             'El servicio de recomendaciones no está disponible: la cuenta de IA no tiene crédito.',
