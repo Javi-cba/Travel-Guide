@@ -19,25 +19,69 @@ router.post('/usuario', async (req, res) => {
     res.status(200).json(recomends);
   } catch (error) {
     // Nunca serializar el error de axios: su config incluye los headers con
-    // las API keys y quedaría expuesta en la respuesta al cliente.
-    console.error('Error al obtener Recomendaciones:', error.message);
-
+    // las API keys y quedaría expuesta en la respuesta al cliente. Del cuerpo
+    // del error externo solo se propaga el código, que no es sensible.
     const status = error.response?.status;
+    const codigo = error.response?.data?.error?.code;
+    const detalle = error.response?.data?.error?.message;
+    // El flujo llama a dos servicios externos: sin saber cuál falló, un 429 del
+    // user-service se leería como falta de crédito de OpenAI.
+    const origen = error.origen || 'desconocido';
+
+    console.error(
+      `Error al obtener Recomendaciones [origen=${origen}]:`,
+      error.message,
+      status ? `| upstream ${status} ${codigo || ''} ${detalle || ''}` : ''
+    );
+
+    if (error.noEncontrado || (origen === 'usuarios' && status === 404)) {
+      return res.status(404).json({ message: 'Usuario no encontrado', origen });
+    }
+
+    if (origen === 'usuarios') {
+      return res.status(502).json({
+        message: 'No se pudo obtener el usuario para generar recomendaciones',
+        origen,
+      });
+    }
 
     if (status === 429) {
+      // OpenAI usa 429 tanto para falta de crédito como para rate limit:
+      // son problemas distintos y el mensaje tiene que decir cuál es.
+      if (codigo === 'insufficient_quota') {
+        return res.status(503).json({
+          message:
+            'El servicio de recomendaciones no está disponible: la cuenta de IA no tiene crédito.',
+          codigo,
+          origen,
+        });
+      }
+
       return res.status(429).json({
         message:
-          'El servicio de recomendaciones alcanzó su límite de uso. Intentá más tarde.',
+          'Demasiadas solicitudes al servicio de recomendaciones. Probá de nuevo en unos segundos.',
+        codigo,
+        origen,
       });
     }
 
     if (status === 401 || status === 403) {
       return res.status(502).json({
         message: 'Error de credenciales con un servicio externo',
+        codigo,
+        origen,
       });
     }
 
-    res.status(500).json({ message: 'Error al obtener Recomendaciones' });
+    if (codigo === 'model_not_found' || codigo === 'invalid_request_error') {
+      return res.status(502).json({
+        message: 'El modelo de IA configurado no es válido para esta cuenta',
+        codigo,
+        origen,
+      });
+    }
+
+    res.status(500).json({ message: 'Error al obtener Recomendaciones', origen });
   }
 });
 

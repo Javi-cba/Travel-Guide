@@ -32,6 +32,7 @@ async function getAIResponse(prompt) {
     return response.data;
   } catch (error) {
     console.error('Error al enviar el prompt a OpenAI:', error.message);
+    error.origen = 'ia'; // para no confundirlo con un fallo del user-service
     throw error;
   }
 }

@@ -12,12 +12,21 @@ async function getByUser(email) {
       throw new Error('Falta la variable de entorno URL_USER');
     }
 
-    const resp = await axios.get(`${URL_USER}/buscar-email`, {
-      params: { email },
-    });
+    let resp;
+    try {
+      resp = await axios.get(`${URL_USER}/buscar-email`, {
+        params: { email },
+      });
+    } catch (error) {
+      error.origen = 'usuarios';
+      throw error;
+    }
 
     if (!resp.data) {
-      throw new Error('Usuario no encontrado');
+      const error = new Error('Usuario no encontrado');
+      error.origen = 'usuarios';
+      error.noEncontrado = true;
+      throw error;
     }
     const user = resp.data;
 
