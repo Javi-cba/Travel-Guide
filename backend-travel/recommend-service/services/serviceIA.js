@@ -15,7 +15,7 @@ async function getAIResponse(prompt) {
     const response = await axios.post(
       URL_OPENAI,
       {
-        model: 'gpt-4o-mini',
+        model: process.env.OPENAI_MODEL || 'gpt-5.4-mini',
         messages: [{ role: 'system', content: prompt }],
         max_tokens: 1100,
       },
